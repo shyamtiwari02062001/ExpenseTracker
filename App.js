@@ -65,13 +65,21 @@ const ExpensesOverview = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
+          headerTintColor: '#fff',
+        }}>
         <Stack.Screen
           name="ExpenseOverview"
           component={ExpensesOverview}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="ManageExpense" component={ManageExpense} />
+        <Stack.Screen
+          options={{presentation: 'modal'}}
+          name="ManageExpense"
+          component={ManageExpense}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
