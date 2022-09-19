@@ -8,6 +8,7 @@ import AllExpense from './screens/allExpenses';
 import {GlobalStyles} from './constants/styles';
 import {Image} from 'react-native';
 import IconButton from './components/ui/iconbutton';
+import ExpenseContextProvider from './store/expenses_context';
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 const ExpensesOverview = () => {
@@ -64,24 +65,26 @@ const ExpensesOverview = () => {
 };
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
-          headerTintColor: '#fff',
-        }}>
-        <Stack.Screen
-          name="ExpenseOverview"
-          component={ExpensesOverview}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          options={{presentation: 'modal'}}
-          name="ManageExpense"
-          component={ManageExpense}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ExpenseContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
+            headerTintColor: '#fff',
+          }}>
+          <Stack.Screen
+            name="ExpenseOverview"
+            component={ExpensesOverview}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            options={{presentation: 'modal'}}
+            name="ManageExpense"
+            component={ManageExpense}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ExpenseContextProvider>
   );
 };
 export default App;

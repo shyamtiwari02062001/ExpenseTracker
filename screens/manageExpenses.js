@@ -1,8 +1,9 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useContext, useLayoutEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Button from '../components/ui/button';
 import IconButton from '../components/ui/iconbutton';
 import {GlobalStyles} from '../constants/styles';
+import {ExpenseContext} from '../store/expenses_context';
 const ManageExpense = ({route, navigation}) => {
   const expenseId = route.params?.expenseId;
   const isEditing = !!expenseId;
@@ -11,7 +12,7 @@ const ManageExpense = ({route, navigation}) => {
       title: isEditing ? 'Edit Expense' : 'Add Expense',
     });
   });
-
+  const expenseCTX = useContext(ExpenseContext);
   return (
     <View style={styles.container}>
       <View style={styles.buttons}>
@@ -35,6 +36,7 @@ const ManageExpense = ({route, navigation}) => {
         <View style={styles.deleteContainer}>
           <IconButton
             onPress={() => {
+              expenseCTX.deleteExpense(expenseId);
               navigation.goBack();
             }}
             icon={require('../assets/bin.png')}
