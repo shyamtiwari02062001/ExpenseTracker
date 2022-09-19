@@ -22,7 +22,7 @@ const ExpensesOverview = () => {
         name="RecentExpenses"
         component={RecentExpense}
         options={{
-          title: 'Rexent Expenses',
+          title: 'Recent Expenses',
           tabBarLabel: 'Recent',
           tabBarIcon: ({color, size}) => (
             <Image
@@ -36,8 +36,8 @@ const ExpensesOverview = () => {
         name="AllExpenses"
         component={AllExpense}
         options={{
-          title: 'Rexent Expenses',
-          tabBarLabel: 'Recent',
+          title: 'All Expenses',
+          tabBarLabel: 'All',
           tabBarIcon: ({color, size}) => (
             <Image
               source={require('./assets/calendar.png')}
