@@ -4,7 +4,9 @@ import {GlobalStyles} from '../constants/styles';
 
 const ExpenseItem = ({description, date, amount}) => {
   return (
-    <Pressable>
+    <Pressable
+      onPress={() => {}}
+      style={({pressed}) => pressed && styles.pressed}>
       <View style={styles.item}>
         <View>
           <Text style={[styles.textBase, styles.description]}>
@@ -21,6 +23,9 @@ const ExpenseItem = ({description, date, amount}) => {
 };
 export default ExpenseItem;
 const styles = StyleSheet.create({
+  pressed: {
+    opacity: 0.75,
+  },
   item: {
     padding: 12,
     marginVertical: 8,
