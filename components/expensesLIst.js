@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {getFormatedDate} from '../util.js/date';
+import {getFormatedDate} from '../util/date';
 import ExpenseItem from './expenseItem';
 
 const ExpenseList = ({expenses}) => {

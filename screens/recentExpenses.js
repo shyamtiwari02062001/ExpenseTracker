@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import ExpenseOutput from '../components/expenseOutput';
 import {ExpenseContext} from '../store/expenses_context';
-import {GetDayMinusDays} from '../util.js/date';
+import {GetDayMinusDays} from '../util/date';
 const RecentExpense = () => {
   const expenseCTX = useContext(ExpenseContext);
   const recentExpense = expenseCTX.expenses.filter(expenses => {
