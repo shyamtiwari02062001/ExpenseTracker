@@ -17,12 +17,12 @@ const ManageExpense = ({route, navigation}) => {
     });
   });
   const confirmHandler = expenseData => {
-    navigation.goBack();
     if (isEditing) {
       expenseCTX.updateExpense(expenseId, expenseData);
     } else {
       expenseCTX.addExpense(expenseData);
     }
+    navigation.goBack();
   };
   const cancelHandler = () => {
     navigation.goBack();
