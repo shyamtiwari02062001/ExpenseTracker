@@ -1,11 +1,14 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const ExpenseSummary = ({expenses}) => {
+const ExpenseSummary = ({periodName, expenses}) => {
+  const expensesSum = expenses.reduce((sum, expense) => {
+    return sum + expense.amount;
+  }, 0);
   return (
     <View>
-      <Text>Last 7 days</Text>
-      <Text>$1276</Text>
+      <Text>{periodName}</Text>
+      <Text>${expensesSum.toFixed(2)}</Text>
     </View>
   );
 };
