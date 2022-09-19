@@ -28,6 +28,19 @@ const ManageExpense = ({route, navigation}) => {
           style={styles.buttonStyle}
           onPress={() => {
             navigation.goBack();
+            if (isEditing) {
+              expenseCTX.updateExpense(expenseId, {
+                description: 'Test!!',
+                amount: 19.09,
+                date: new Date('2022-05-12'),
+              });
+            } else {
+              expenseCTX.addExpense({
+                description: 'Test',
+                amount: 19.99,
+                date: new Date('2022-05-22'),
+              });
+            }
           }}>
           {isEditing ? 'Update' : 'Add'}
         </Button>
