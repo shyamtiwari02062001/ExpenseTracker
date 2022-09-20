@@ -17,12 +17,12 @@ const ManageExpense = ({route, navigation}) => {
       title: isEditing ? 'Edit Expense' : 'Add Expense',
     });
   });
-  const confirmHandler = expenseData => {
+  const confirmHandler = async expenseData => {
     if (isEditing) {
       expenseCTX.updateExpense(expenseId, expenseData);
     } else {
-      storeExpense(expenseData);
-      expenseCTX.addExpense(expenseData);
+      const id = await storeExpense(expenseData);
+      expenseCTX.addExpense({...expenseData, id: id});
     }
     navigation.goBack();
   };

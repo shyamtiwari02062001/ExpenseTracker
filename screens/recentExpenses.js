@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import ExpenseOutput from '../components/expenseOutput';
 import {ExpenseContext} from '../store/expenses_context';
 import {GetDayMinusDays} from '../util/date';
