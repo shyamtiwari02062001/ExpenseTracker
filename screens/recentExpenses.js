@@ -1,14 +1,17 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ExpenseOutput from '../components/expenseOutput';
+import LoadingOverlay from '../components/ui/loadingOverlay';
 import {ExpenseContext} from '../store/expenses_context';
 import {GetDayMinusDays} from '../util/date';
 import {getExpense} from '../util/http';
 const RecentExpense = () => {
   const expenseCTX = useContext(ExpenseContext);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function getExpenses() {
       const expenses = await getExpense();
       expenseCTX.setExpenses(expenses);
+      setLoading(false);
     }
     getExpenses();
   }, [expenseCTX]);
@@ -17,7 +20,9 @@ const RecentExpense = () => {
     const date = GetDayMinusDays(today, 7);
     return expenses.date >= date && expenses.date <= today;
   });
-  return (
+  return loading ? (
+    <LoadingOverlay />
+  ) : (
     <ExpenseOutput
       expenses={recentExpense}
       expensePeriod={'Last 7 days'}
